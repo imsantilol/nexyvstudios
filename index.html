@@ -1,0 +1,2393 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Nexyv Studio | Desarrollo Web</title>
+  <meta name="description" content="Agencia de desarrollo web y estrategia digital. Nexyv Studio." />
+
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/rps7pQtS/46652077-94d6-4e79-97d1-14f1c24b92a2-removalai-preview.png">
+  <link rel="apple-touch-icon" href="https://i.postimg.cc/rps7pQtS/46652077-94d6-4e79-97d1-14f1c24b92a2-removalai-preview.png">
+  <meta name="theme-color" content="#050507" />
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nexyvstudios.com/">
+  <meta property="og:title" content="Nexyv Studio | Desarrollo Web">
+  <meta property="og:description" content="Experiencias web premium. Estética, performance y estrategia directa para tu negocio.">
+  <meta property="og:image" content="https://i.postimg.cc/rps7pQtS/46652077-94d6-4e79-97d1-14f1c24b92a2-removalai-preview.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://nexyvstudios.com/">
+  <meta name="twitter:title" content="Nexyv Studio | Desarrollo Web">
+  <meta name="twitter:description" content="Experiencias web premium. Estética, performance y estrategia directa para tu negocio.">
+  <meta name="twitter:image" content="https://i.postimg.cc/rps7pQtS/46652077-94d6-4e79-97d1-14f1c24b92a2-removalai-preview.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#050507;
+      --surface:#0e0e11;
+      --border:rgba(255,255,255,0.08);
+
+      --primary:#6366f1;
+      --primary-glow:rgba(99,102,241,0.25);
+      --secondary:#a855f7;
+      --fiverr:#1dbf73;
+
+      --text-main:#ffffff;
+      --text-muted:#94a3b8;
+
+      --radius:24px;
+    }
+
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background-color:var(--bg);
+      color:var(--text-main);
+      overflow-x:hidden;
+      line-height:1.6;
+    }
+
+    /* ✅ Base styles */
+    .ambient-light{
+      position:fixed; inset:0;
+      z-index:-2; pointer-events:none;
+      background:
+        radial-gradient(circle at 15% 50%, rgba(99,102,241,0.10), transparent 28%),
+        radial-gradient(circle at 85% 30%, rgba(168,85,247,0.10), transparent 28%),
+        radial-gradient(circle at 50% 90%, rgba(255,255,255,0.03), transparent 40%);
+      filter:saturate(1.05);
+    }
+    h1,h2,h3,h4{
+      font-family:'Outfit',sans-serif;
+      color:#fff;
+      letter-spacing:-0.01em;
+    }
+    a{ text-decoration:none; transition:0.3s; color:inherit; }
+    ul{ list-style:none; }
+
+    .container{ max-width:1200px; margin:0 auto; padding:0 2rem; }
+    .section-padding{ padding:8rem 0; }
+
+    /* ✅ Scrollbar */
+    ::-webkit-scrollbar{ width:10px; height:10px; }
+    ::-webkit-scrollbar-track{ background:rgba(255,255,255,0.03); }
+    ::-webkit-scrollbar-thumb{
+      border-radius:999px;
+      border:2px solid rgba(0,0,0,0);
+      background-clip:padding-box;
+      background:rgba(99,102,241,0.55);
+    }
+    ::-webkit-scrollbar-thumb:hover{ background:rgba(99,102,241,0.75); }
+    *{ scrollbar-width:thin; scrollbar-color:rgba(99,102,241,0.60) rgba(255,255,255,0.03); }
+
+    /* --- Components --- */
+    .glass-panel{
+      background:rgba(255,255,255,0.02);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:2.5rem;
+      transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .glass-panel::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(99,102,241,0.16), transparent 45%),
+        radial-gradient(circle at 85% 10%, rgba(168,85,247,0.12), transparent 50%);
+      opacity:0;
+      transition:opacity .35s ease;
+      pointer-events:none;
+    }
+    .glass-panel:hover::before{ opacity:1; }
+    .glass-panel:hover{
+      transform:translateY(-6px);
+      border-color:rgba(99,102,241,0.28);
+      box-shadow:0 22px 50px -14px rgba(0,0,0,0.65);
+      background:rgba(255,255,255,0.03);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 14px;
+      border-radius:999px;
+      background:rgba(99,102,241,0.10);
+      border:1px solid rgba(99,102,241,0.20);
+      color:#c7d2fe;
+      font-size:0.78rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:1.5rem;
+    }
+
+    .btn{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      padding:14px 22px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:0.95rem;
+      cursor:pointer;
+      border:1px solid transparent;
+      gap:10px;
+      transform:translateZ(0);
+    }
+    .btn-primary{ background:#fff; color:#000; }
+    .btn-primary:hover{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 0 26px var(--primary-glow);
+      transform:translateY(-1px);
+    }
+    .btn-outline{
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.10);
+      color:var(--text-muted);
+    }
+    .btn-outline:hover{
+      border-color:rgba(255,255,255,0.24);
+      color:#fff;
+      background:rgba(255,255,255,0.04);
+      transform:translateY(-1px);
+    }
+
+    /* --- NAV --- */
+    nav{
+      position:fixed; top:0; left:0; width:100%;
+      z-index:100;
+      background:rgba(5,5,7,0.62);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      transition:background .25s ease, border-color .25s ease;
+    }
+    nav.scrolled{
+      background:rgba(5,5,7,0.82);
+      border-bottom-color:rgba(255,255,255,0.10);
+    }
+    .nav-inner{
+      height:74px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:1.15rem;
+      font-weight:900;
+      letter-spacing:-0.8px;
+      user-select:none;
+    }
+    .logo span{ color:var(--primary); }
+
+    .nav-links{
+      display:flex;
+      gap:6px;
+      padding:8px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02);
+    }
+    .nav-links a{
+      padding:9px 12px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:0.92rem;
+      color:rgba(148,163,184,0.95);
+    }
+    .nav-links a:hover{
+      color:#fff;
+      background:rgba(255,255,255,0.05);
+    }
+    .nav-right{ display:flex; align-items:center; gap:10px; }
+
+    /* ✅ Language switch (minimal + premium) */
+    .lang-switch{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:6px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.02);
+    }
+    .lang-switch button{
+      height:34px;
+      padding:0 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      background:transparent;
+      color:rgba(148,163,184,0.95);
+      font-weight:900;
+      font-size:.82rem;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .lang-switch button:hover{
+      background:rgba(255,255,255,0.05);
+      color:#fff;
+    }
+    .lang-switch button.active{
+      background:rgba(99,102,241,0.18);
+      border-color:rgba(99,102,241,0.22);
+      color:#c7d2fe;
+    }
+
+    .menu-btn{
+      display:none;
+      width:44px; height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      color:#fff;
+      cursor:pointer;
+    }
+    .menu-btn:hover{ background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.18); }
+
+    .drawer{
+      display:none;
+      position:fixed; inset:0;
+      z-index:200;
+      background:rgba(0,0,0,0.55);
+      backdrop-filter:blur(2px);
+    }
+    .drawer-card{
+      width:min(520px, calc(100% - 24px));
+      margin:86px auto 0;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(12,12,16,0.92);
+      box-shadow:0 24px 70px rgba(0,0,0,0.65);
+      padding:14px;
+    }
+    .drawer a{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 12px;
+      margin-bottom:10px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02);
+      font-weight:900;
+      color:rgba(226,232,240,0.95);
+    }
+    .drawer a:hover{
+      background:rgba(255,255,255,0.04);
+      border-color:rgba(255,255,255,0.10);
+    }
+    .drawer-actions{
+      display:flex;
+      gap:10px;
+      margin-top:4px;
+    }
+    .drawer-actions a{ margin-bottom:0; justify-content:center; }
+
+    /* --- HERO --- */
+    .hero{
+      padding-top:185px;
+      padding-bottom:95px;
+      text-align:center;
+      position:relative;
+    }
+    .hero h1{
+      font-size:clamp(3rem, 6vw, 5rem);
+      line-height:1.05;
+      margin-bottom:1.2rem;
+      color:#fff;
+    }
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      .hero h1{
+        background:linear-gradient(180deg, #fff 18%, rgba(255,255,255,0.55) 100%);
+        background-clip:text;
+        -webkit-background-clip:text;
+        color:transparent;
+        -webkit-text-fill-color:transparent;
+      }
+    }
+    .hero p{
+      font-size:1.18rem;
+      color:var(--text-muted);
+      max-width:720px;
+      margin:0 auto 2.0rem;
+    }
+    .hero p strong{ color:#fff; font-weight:800; }
+
+    /* --- MARQUEE --- */
+    .marquee-container{
+      width:100%;
+      overflow:hidden;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      background:rgba(255,255,255,0.02);
+      padding:1.2rem 0;
+      position:relative;
+    }
+    .marquee-content{
+      display:flex;
+      gap:4rem;
+      width:max-content;
+      animation:scroll 18s linear infinite;
+    }
+    .tech-item{
+      font-family:'Outfit';
+      font-weight:800;
+      font-size:1.12rem;
+      color:rgba(255,255,255,0.18);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      user-select:none;
+    }
+    @keyframes scroll{
+      0%{ transform:translateX(0); }
+      100%{ transform:translateX(-50%); }
+    }
+
+    /* --- ABOUT (1 columna) --- */
+    .bento-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:2rem;
+      margin-top:3rem;
+    }
+
+    /* ✅ TEAM */
+    .team-wrap{
+      margin-top:2rem;
+      padding-top:2rem;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+    .team-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+    .team-head h4{ font-size:1.2rem; margin:0; }
+    .team-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+    .team-card{
+      display:flex;
+      gap:14px;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.02);
+      transition:.25s ease;
+      position:relative;
+      overflow:hidden;
+      min-height:96px;
+    }
+    .team-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 16% 0%, rgba(99,102,241,0.18), transparent 45%),
+        radial-gradient(circle at 90% 14%, rgba(168,85,247,0.12), transparent 55%);
+      opacity:0;
+      transition:opacity .25s ease;
+      pointer-events:none;
+    }
+    .team-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(99,102,241,0.22);
+      background:rgba(255,255,255,0.03);
+      box-shadow:0 22px 60px rgba(0,0,0,0.45);
+    }
+    .team-card:hover::before{ opacity:1; }
+
+    .team-avatar{
+      width:56px; height:56px;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      flex:0 0 auto;
+      box-shadow:0 18px 40px rgba(0,0,0,0.35);
+      display:grid;
+      place-items:center;
+      font-family:'Outfit',sans-serif;
+      font-weight:900;
+      letter-spacing:-0.02em;
+      color:rgba(255,255,255,0.92);
+    }
+    .team-avatar img{
+      width:100%; height:100%;
+      object-fit:cover; display:block;
+      transform:translateZ(0);
+      filter:contrast(1.02) saturate(1.05);
+    }
+    .team-meta{ display:flex; flex-direction:column; gap:6px; min-width:0; }
+    .team-name{
+      font-weight:900;
+      font-family:'Outfit',sans-serif;
+      font-size:1.02rem;
+      color:rgba(255,255,255,0.95);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .team-role{
+      font-weight:800;
+      color:rgba(99,102,241,0.95);
+      font-size:.92rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .team-loc{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:rgba(148,163,184,0.92);
+      font-size:.86rem;
+      margin-top:2px;
+    }
+    .loc-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.16);
+      border:1px solid rgba(255,255,255,0.10);
+    }
+
+    /* ✅ STATS (cards) */
+    .stat-row{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+      margin-top:22px;
+      padding-top:22px;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+    .stat{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.02);
+      padding:16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      transition:.25s ease;
+    }
+    .stat::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(99,102,241,0.16), transparent 50%),
+        radial-gradient(circle at 90% 20%, rgba(168,85,247,0.12), transparent 55%);
+      opacity:.25;
+      pointer-events:none;
+    }
+    .stat:hover{
+      transform:translateY(-2px);
+      border-color:rgba(99,102,241,0.20);
+      background:rgba(255,255,255,0.03);
+      box-shadow:0 18px 55px rgba(0,0,0,0.40);
+    }
+    .stat-ic{
+      width:44px; height:44px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+      box-shadow:0 14px 35px rgba(0,0,0,0.30);
+      position:relative;
+    }
+    .stat-ic svg{
+      width:18px; height:18px;
+      color:rgba(226,232,240,0.95);
+      opacity:.95;
+    }
+    .stat-main{ display:flex; flex-direction:column; gap:2px; min-width:0; position:relative; }
+    .stat-main h4{
+      font-size:2.05rem;
+      line-height:1;
+      margin:0;
+      letter-spacing:-0.03em;
+    }
+    .stat-main p{
+      margin:0;
+      font-size:.78rem;
+      color:rgba(148,163,184,0.95);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:800;
+    }
+    .stat-main span{
+      margin-top:4px;
+      font-size:.88rem;
+      color:rgba(148,163,184,0.95);
+      line-height:1.25;
+    }
+    @media (max-width:520px){
+      .stat-row{ grid-template-columns:1fr; }
+    }
+
+    /* --- PRICING --- */
+    .pricing-section{
+      background:linear-gradient(180deg, transparent 0%, rgba(99,102,241,0.03) 100%);
+    }
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      gap:2rem;
+      margin-top:4rem;
+    }
+    .price-card{
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:2.5rem;
+      display:flex;
+      flex-direction:column;
+      transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .price-card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(99,102,241,0.16), transparent 45%),
+        radial-gradient(circle at 90% 10%, rgba(168,85,247,0.12), transparent 50%);
+      opacity:0;
+      transition:opacity .35s ease;
+      pointer-events:none;
+    }
+    .price-card:hover::before{ opacity:1; }
+    .price-card:hover{
+      border-color:rgba(99,102,241,0.28);
+      transform:translateY(-8px);
+      box-shadow:0 26px 60px -18px rgba(0,0,0,0.75);
+      background:rgba(255,255,255,0.03);
+    }
+    .price-card.featured{
+      border-color:rgba(99,102,241,0.45);
+      background:rgba(99,102,241,0.05);
+    }
+    .featured-badge{
+      position:absolute; top:0; right:0;
+      background:var(--primary);
+      color:#fff;
+      padding:5px 12px;
+      font-size:.7rem;
+      font-weight:900;
+      border-bottom-left-radius:12px;
+      letter-spacing:.08em;
+    }
+    .price-header h3{ font-size:1.4rem; margin-bottom:.5rem; }
+    .price-header p{ font-size:.95rem; color:var(--text-muted); min-height:45px; }
+    .price-tag{
+      font-size:3rem;
+      font-weight:900;
+      margin:1.2rem 0 .4rem;
+      letter-spacing:-0.02em;
+    }
+    .price-meta{
+      font-size:.85rem;
+      color:rgba(148,163,184,0.9);
+      display:block;
+      margin-bottom:.75rem;
+    }
+    .ars-meta{
+      font-size:0.92rem;
+      color:rgba(226,232,240,0.92);
+      display:block;
+      margin-bottom:2rem;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.02);
+    }
+    .ars-meta b{ color:#fff; font-weight:900; letter-spacing:-0.01em; }
+    .ars-meta small{
+      display:block;
+      margin-top:6px;
+      color:rgba(148,163,184,0.9);
+      font-size:.78rem;
+    }
+    .pricing-note{
+      max-width:820px;
+      margin:18px auto 0;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.02);
+      color:rgba(148,163,184,0.95);
+      font-size:.92rem;
+      line-height:1.45;
+    }
+    .pricing-note b{ color:#fff; font-weight:900; }
+    .features li{
+      display:flex;
+      gap:10px;
+      margin-bottom:12px;
+      font-size:0.97rem;
+      color:rgba(226,232,240,0.88);
+    }
+    .features svg{ width:18px; color:rgba(99,102,241,0.95); margin-top:2px; }
+
+    .btn-pack{
+      width:100%;
+      margin-top:auto;
+      padding:16px;
+      border-radius:14px;
+      font-weight:900;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      color:#fff;
+      transition:.25s ease;
+    }
+    .btn-pack:hover{
+      border-color:rgba(255,255,255,0.20);
+      background:rgba(255,255,255,0.05);
+      transform:translateY(-1px);
+    }
+    .btn-pack.glow{
+      background:#fff;
+      color:#000;
+      border-color:transparent;
+    }
+    .btn-pack.glow:hover{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 0 26px var(--primary-glow);
+    }
+
+    /* --- Fiverr banner --- */
+    .fiverr-section{
+      margin:8rem 0;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:
+        radial-gradient(circle at 15% 25%, rgba(29,191,115,0.14), transparent 40%),
+        linear-gradient(90deg, rgba(29,191,115,0.10) 0%, rgba(255,255,255,0.01) 55%, transparent 100%);
+      padding:3.5rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:3rem;
+      position:relative;
+      overflow:hidden;
+    }
+    .fiverr-section::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(255,255,255,0.06), transparent 38%),
+        radial-gradient(circle at 25% 85%, rgba(29,191,115,0.10), transparent 45%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .fiverr-logo{
+      color:var(--fiverr);
+      font-weight:900;
+      font-size:1.05rem;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:1rem;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      position:relative;
+    }
+
+    .trust-grid{
+      position:relative;
+      margin-top:1.3rem;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:10px;
+      max-width:640px;
+    }
+    .trust-item{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.02);
+      color:rgba(226,232,240,0.90);
+      font-weight:750;
+      font-size:.92rem;
+    }
+    .trust-item svg{
+      width:18px; height:18px;
+      margin-top:1px;
+      color:rgba(29,191,115,0.95);
+      flex:0 0 auto;
+    }
+    .trust-item span{
+      color:rgba(148,163,184,0.92);
+      display:block;
+      font-weight:650;
+      margin-top:2px;
+      font-size:.82rem;
+      line-height:1.35;
+    }
+
+    .note-mini{
+      position:relative;
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.02);
+      color:rgba(148,163,184,0.95);
+      font-size:.88rem;
+    }
+    .note-mini b{ color:#fff; font-weight:900; }
+
+    /* --- Contact --- */
+    .form-box{ max-width:600px; margin:0 auto; }
+    .input-group{ margin-bottom:1.2rem; }
+    .input-item{
+      width:100%;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.10);
+      padding:16px;
+      border-radius:14px;
+      color:#fff;
+      font-family:inherit;
+      transition:0.25s ease;
+    }
+    .input-item:focus{
+      outline:none;
+      border-color:rgba(99,102,241,0.55);
+      background:rgba(99,102,241,0.06);
+      box-shadow:0 0 0 4px rgba(99,102,241,0.12);
+    }
+
+    .select-wrap{ position:relative; width:100%; }
+    .select-wrap select{
+      width:100%;
+      appearance:none;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.10);
+      padding:16px 52px 16px 16px;
+      border-radius:14px;
+
+      color:rgba(226,232,240,0.92);
+      font-family:inherit;
+      font-weight:700;
+      letter-spacing:-0.01em;
+
+      transition:0.25s ease;
+      outline:none;
+    }
+    .select-wrap select:focus{
+      border-color:rgba(99,102,241,0.55);
+      background:rgba(99,102,241,0.06);
+      box-shadow:0 0 0 4px rgba(99,102,241,0.12);
+    }
+    .select-wrap select:hover{
+      border-color:rgba(255,255,255,0.18);
+      background:rgba(255,255,255,0.04);
+    }
+    .select-wrap select:invalid{
+      color:rgba(148,163,184,0.85);
+      font-weight:600;
+    }
+    .select-icon{
+      position:absolute;
+      right:14px;
+      top:50%;
+      transform:translateY(-50%);
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      display:grid;
+      place-items:center;
+      pointer-events:none;
+      transition:.25s ease;
+    }
+    .select-wrap select:focus + .select-icon{
+      border-color:rgba(99,102,241,0.35);
+      box-shadow:0 0 22px rgba(99,102,241,0.18);
+    }
+    .select-icon svg{ width:18px; height:18px; opacity:0.9; }
+    .select-wrap select option{
+      background:#0b0c10;
+      color:rgba(226,232,240,0.95);
+      font-weight:700;
+    }
+    .select-wrap select option:checked{ background:#121326; }
+
+    textarea.input-item{ resize:none; }
+
+    /* =========================================
+      ✅ NUEVO CSS MEJORADO PARA EL FOOTER
+      ========================================= */
+    footer {
+      position: relative;
+      margin-top: 10rem;
+      padding-top: 5rem;
+      padding-bottom: 2rem;
+      background: linear-gradient(180deg, rgba(5,5,7,0) 0%, rgba(5,5,7,0.8) 100%);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 1px;
+      background: radial-gradient(circle, rgba(99,102,241,0.5) 0%, transparent 100%);
+      opacity: 0.7;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-brand h3 span { color: var(--primary); }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 340px;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .footer-mail {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: 0.25s ease;
+    }
+    .footer-mail:hover {
+      background: rgba(99,102,241,0.1);
+      border-color: rgba(99,102,241,0.3);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(99,102,241,0.15);
+    }
+    .footer-mail svg { opacity: 0.8; }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+    .footer-links a:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 2rem 0;
+    }
+
+    @media(max-width: 900px){
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+    /* ========================================= */
+
+    /* ✅ Modal */
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.62);
+      backdrop-filter:blur(6px);
+      -webkit-backdrop-filter:blur(6px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:999;
+      padding:18px;
+    }
+    .modal{
+      width:min(520px, 100%);
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(12,12,16,0.92);
+      box-shadow:0 40px 120px rgba(0,0,0,0.75);
+      overflow:hidden;
+      position:relative;
+    }
+    .modal::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(99,102,241,0.20), transparent 45%),
+        radial-gradient(circle at 90% 10%, rgba(168,85,247,0.14), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .modal-inner{
+      position:relative;
+      padding:22px;
+      display:grid;
+      gap:12px;
+    }
+    .modal-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .modal-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      color:rgba(226,232,240,0.92);
+      font-weight:800;
+      font-size:.82rem;
+    }
+    .modal-close{
+      width:42px; height:42px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      color:rgba(226,232,240,0.95);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      transition:.25s ease;
+    }
+    .modal-close:hover{
+      border-color:rgba(255,255,255,0.18);
+      background:rgba(255,255,255,0.05);
+      transform:translateY(-1px);
+    }
+    .modal h3{ font-size:1.4rem; margin-top:6px; }
+    .modal p{ color:rgba(148,163,184,0.95); font-size:0.98rem; }
+    .modal-actions{ display:flex; gap:10px; margin-top:8px; }
+    .modal-actions .btn{ width:100%; }
+
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; }
+    .spinner{
+      width:16px; height:16px;
+      border-radius:999px;
+      border:2px solid rgba(0,0,0,0.25);
+      border-top-color:rgba(0,0,0,0.75);
+      animation:spin 0.8s linear infinite;
+    }
+    .btn-primary .spinner{
+      border:2px solid rgba(255,255,255,0.25);
+      border-top-color:rgba(255,255,255,0.9);
+    }
+
+    /* =========================
+      ✅ LOADING SCREEN (2.5s)
+    ========================= */
+    #pageLoader{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      background:
+        radial-gradient(circle at 20% 35%, rgba(99,102,241,0.14), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(168,85,247,0.10), transparent 45%),
+        rgba(5,5,7,0.92);
+
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    #pageLoader.hide{
+      opacity:0;
+      transform: scale(1.02);
+      pointer-events:none;
+    }
+
+    .loader-card{
+      width:min(520px, calc(100% - 38px));
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(12,12,16,0.72);
+      box-shadow: 0 40px 140px rgba(0,0,0,0.70);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .loader-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(99,102,241,0.22), transparent 50%),
+        radial-gradient(circle at 85% 15%, rgba(168,85,247,0.14), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .loader-inner{
+      position:relative;
+      padding:26px 24px 22px;
+      display:grid;
+      gap:14px;
+      text-align:center;
+    }
+
+    .loader-mark{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      font-family:'Outfit',sans-serif;
+      font-weight:900;
+      letter-spacing:-0.03em;
+      font-size:1.2rem;
+    }
+
+    .loader-mark span{
+      color:var(--primary);
+    }
+
+    .loader-sub{
+      color:rgba(148,163,184,0.92);
+      font-size:.95rem;
+      line-height:1.4;
+    }
+
+    .loader-progress{
+      margin-top:10px;
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.10);
+      overflow:hidden;
+    }
+
+    .loader-bar{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(99,102,241,1), rgba(168,85,247,1));
+      box-shadow: 0 0 26px rgba(99,102,241,0.25);
+      transition: width 2.5s cubic-bezier(.2,.9,.2,1);
+    }
+
+    .loader-dots{
+      display:flex;
+      gap:6px;
+      justify-content:center;
+      margin-top:4px;
+    }
+
+    .loader-dots i{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.18);
+      border:1px solid rgba(255,255,255,0.10);
+      animation: pulseDot 1s ease-in-out infinite;
+    }
+
+    .loader-dots i:nth-child(2){ animation-delay: .15s; }
+    .loader-dots i:nth-child(3){ animation-delay: .30s; }
+
+    @keyframes pulseDot{
+      0%,100%{ transform:translateY(0); opacity:.55; }
+      50%{ transform:translateY(-3px); opacity:1; }
+    }
+
+    body.is-loading{
+      overflow:hidden;
+    }
+
+    @keyframes spin{ to{ transform:rotate(360deg);} }
+
+    /* =========================
+      ✅ BETTER SUBMIT BUTTON
+    ========================= */
+    .btn-submit{
+      width:100%;
+      border:none;
+      padding:16px 18px;
+      border-radius:16px;
+
+      font-family:inherit;
+      font-weight:900;
+      font-size:1rem;
+
+      cursor:pointer;
+      transition:.25s ease;
+      position:relative;
+      overflow:hidden;
+
+      color:#0b0c10;
+      background:linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.88) 100%);
+      box-shadow:0 18px 55px rgba(0,0,0,0.35);
+    }
+
+    .btn-submit::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(99,102,241,0.20), transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(168,85,247,0.14), transparent 55%);
+      opacity:0;
+      transition:opacity .25s ease;
+    }
+
+    .btn-submit:hover{
+      transform:translateY(-2px);
+      background:linear-gradient(180deg, rgba(99,102,241,1) 0%, rgba(168,85,247,1) 100%);
+      color:#fff;
+      box-shadow:0 22px 70px rgba(99,102,241,0.22);
+    }
+
+    .btn-submit:hover::before{ opacity:1; }
+
+    .btn-submit:active{
+      transform:translateY(0px);
+    }
+
+    .btn-submit[disabled]{
+      opacity:.65;
+      cursor:not-allowed;
+      transform:none;
+      box-shadow:none;
+    }
+
+    .btn-submit .spinner{
+      border:2px solid rgba(255,255,255,0.25);
+      border-top-color:rgba(255,255,255,0.95);
+    }
+
+    .select-error{
+      display:none;
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(239,68,68,0.32);
+      background:rgba(239,68,68,0.10);
+      color:rgba(254,202,202,0.95);
+      font-weight:800;
+      font-size:.90rem;
+    }
+
+    .select-wrap.error select{
+      border-color:rgba(239,68,68,0.65) !important;
+      box-shadow:0 0 0 4px rgba(239,68,68,0.12);
+    }
+
+    @media (max-width:900px){
+      .nav-links{ display:none; }
+      .menu-btn{ display:inline-flex; align-items:center; justify-content:center; }
+      .team-grid{ grid-template-columns:1fr; }
+      .trust-grid{ grid-template-columns:1fr; }
+    }
+    @media (max-width:768px){
+      .fiverr-section, .footer-grid{ grid-template-columns:1fr; flex-direction:column; }
+      .fiverr-section{ padding:2.6rem; }
+      .nav-right{ gap:8px; }
+      .lang-switch{ display:none; } /* optional: oculto en mobile para no cargar nav */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="pageLoader" aria-hidden="false">
+    <div class="loader-card">
+      <div class="loader-inner">
+        <div class="loader-mark">
+          NEXYV <span>STUDIOS</span>
+        </div>
+
+        <div class="loader-sub" data-t="loader.subtitle">
+          Cargando experiencia premium…
+        </div>
+
+        <div class="loader-progress" aria-label="Loading">
+          <div class="loader-bar" id="loaderBar"></div>
+        </div>
+
+        <div class="loader-dots" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ambient-light"></div>
+
+  <nav id="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <div>NEXYV <span>STUDIOS</span></div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#about" data-t="nav.about">Estudio</a>
+        <a href="#pricing" data-t="nav.pricing">Packs</a>
+        <a href="#fiverr" data-t="nav.fiverr">Fiverr</a>
+        <a href="#contact" data-t="nav.support">Soporte</a>
+      </div>
+
+      <div class="nav-right">
+        <!-- ✅ Switcher -->
+        <div class="lang-switch" role="group" aria-label="Language switcher">
+          <button type="button" id="langES" class="active" aria-label="Español">ES</button>
+          <button type="button" id="langEN" aria-label="English">EN</button>
+        </div>
+
+        <a href="#pricing" class="btn btn-primary" style="padding:10px 18px; font-size:0.9rem;" data-t="nav.viewPacks">Ver Packs</a>
+        <button class="menu-btn" id="openMenu" aria-label="Abrir menú">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-card">
+      <a href="#about" class="drawerLink"><span data-t="nav.about">Estudio</span> <span>→</span></a>
+      <a href="#pricing" class="drawerLink"><span data-t="nav.pricing">Packs</span> <span>→</span></a>
+      <a href="#fiverr" class="drawerLink"><span data-t="nav.fiverr">Fiverr</span> <span>→</span></a>
+      <a href="#contact" class="drawerLink"><span data-t="nav.support">Soporte</span> <span>→</span></a>
+
+      <div class="drawer-actions">
+        <a href="#pricing" class="btn btn-primary" style="flex:1;" data-t="nav.viewPacks">Ver Packs</a>
+        <a href="https://www.fiverr.com/s/LdA0Ew7" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex:1;" data-t="drawer.fiverr">Fiverr ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero container" data-aos="fade-up">
+    <h1 data-t="hero.title" data-t-html="1">Arquitectura Digital<br>Sin Límites.</h1>
+
+    <p data-t="hero.subtitle">
+      Creamos experiencias web de alto rendimiento. <strong>Estética premium</strong>, ingeniería sólida y estrategia directa para tu negocio.
+    </p>
+
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="#pricing" class="btn btn-primary" data-t="hero.cta1">Explorar Packs</a>
+      <a href="https://www.fiverr.com/s/LdA0Ew7" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-t="hero.cta2">Perfil Fiverr ↗</a>
+    </div>
+  </section>
+
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <span class="tech-item">UI/UX &nbsp;•&nbsp; SEO &nbsp;•&nbsp; PERFORMANCE &nbsp;•&nbsp; LANDING PAGES &nbsp;•&nbsp; ACCESIBILIDAD &nbsp;•&nbsp;</span>
+      <span class="tech-item">UI/UX &nbsp;•&nbsp; SEO &nbsp;•&nbsp; PERFORMANCE &nbsp;•&nbsp; LANDING PAGES &nbsp;•&nbsp; ACCESIBILIDAD &nbsp;•&nbsp;</span>
+      <span class="tech-item">UI/UX &nbsp;•&nbsp; SEO &nbsp;•&nbsp; PERFORMANCE &nbsp;•&nbsp; LANDING PAGES &nbsp;•&nbsp; ACCESIBILIDAD &nbsp;•&nbsp;</span>
+    </div>
+  </div>
+
+  <section id="about" class="container section-padding">
+    <div class="bento-grid">
+      <div class="glass-panel" data-aos="fade-up">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:14px;">
+          <h3 style="margin:0;" data-t="about.title">La Diferencia Nexyv</h3>
+        </div>
+
+        <p style="color:var(--text-muted); margin-top:1rem; font-size:1.1rem;" data-t="about.p1" data-t-html="1">
+          Soy <strong>Santiago Sánchez Solbes</strong>, fundador de Nexyv Studio.
+        </p>
+
+        <p style="color:var(--text-muted); margin-top:1rem;" data-t="about.p2" data-t-html="1">
+          Eliminamos la burocracia típica de las agencias: sin intermediarios y sin reuniones innecesarias.
+          Trabajás directo <strong>con el equipo que construye tu producto</strong>. Resultado: claridad, velocidad y una web de mayor nivel.
+        </p>
+
+        <div class="team-wrap">
+          <div class="team-head">
+            <div>
+              <h4 data-t="team.title">Equipo</h4>
+            </div>
+          </div>
+
+          <div class="team-grid">
+            <div class="team-card">
+              <div class="team-avatar">
+                <img src="https://i.postimg.cc/1XXjbDjf/Whats-App-Image-2026-01-28-at-12-47-09-AM.jpg" alt="Santiago Sánchez" loading="lazy">
+              </div>
+              <div class="team-meta">
+                <div class="team-name">Santiago Sánchez</div>
+                <div class="team-role" data-t="team.role1">Founder • Lead Developer</div>
+                <div class="team-loc"><span class="loc-dot"></span> Buenos Aires, AR</div>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-avatar">
+                <img src="https://i.postimg.cc/QdHPdLhH/Screenshot-2026-01-30-210634.png" alt="Manuel Nuñez" loading="lazy">
+              </div>
+              <div class="team-meta">
+                <div class="team-name">Manuel Nuñez</div>
+                <div class="team-role" data-t="team.role2">Co-Founder • Marketing</div>
+                <div class="team-loc"><span class="loc-dot"></span> Buenos Aires, AR</div>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-avatar">
+                <img src="https://i.postimg.cc/YqXZ72KM/Screenshot-2026-01-30-211241.png" alt="Victoria Solbes" loading="lazy">
+              </div>
+              <div class="team-meta">
+                <div class="team-name">Victoria Solbes</div>
+                <div class="team-role" data-t="team.role3">Directora General</div>
+                <div class="team-loc"><span class="loc-dot"></span> Buenos Aires, AR</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 14l3-3 2 2 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 21H4a1 1 0 01-1-1V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="stat-main">
+              <h4>+3</h4>
+              <p data-t="stats.expTitle">Años de experiencia</p>
+              <span data-t="stats.expText">Webs rápidas, limpias y profesionales.</span>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" stroke-width="2"/>
+                <path d="M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 2c3 3 3 17 0 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="stat-main">
+              <h4>100%</h4>
+              <p data-t="stats.remoteTitle">Remoto</p>
+              <span data-t="stats.remoteText">Trabajamos async: rápido, claro y sin vueltas.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing-section section-padding">
+    <div class="container">
+      <div style="text-align:center; max-width:760px; margin:0 auto;" data-aos="fade-up">
+        <span class="badge" data-t="pricing.badge">Tarifas del Estudio</span>
+        <h2 data-t="pricing.title">Elegí tu Nivel</h2>
+
+        <div class="pricing-note" data-t="pricing.note" data-t-html="1">
+          <b>Importante:</b> nuestros precios están pensados para ser accesibles manteniendo calidad “agency-level”.
+          Trabajamos directo (sin capas de cuenta/ventas), por eso podés obtener un resultado premium con un costo más razonable.
+        </div>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="price-header">
+            <h3>Personal Brand</h3>
+            <p data-t="pricing.p1.desc">Ideal para portfolios, CVs digitales o landing pages de producto único.</p>
+          </div>
+
+          <div class="price-tag" data-usd="50">$50</div>
+
+          <span class="ars-meta" data-ars-for="50">
+            ARS <b class="ars-value">—</b> <span style="opacity:.9;" data-t="pricing.arsEst">(estimado)</span>
+            <small data-t="pricing.arsSmall">El estimado incluye impuestos/fees aproximados.</small>
+          </span>
+
+          <ul class="features">
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p1.f1">Diseño One-Page (1 Página)</span>
+            </li>
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p1.f2">Integración WhatsApp</span>
+            </li>
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p1.f3">Hosting Configurado</span>
+            </li>
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p1.f4">Entrega: 5 Días</span>
+            </li>
+          </ul>
+
+          <a href="https://ko-fi.com/s/7f2594e7ae" target="_blank" rel="noopener noreferrer" class="btn-pack" data-t="pricing.hire">Contratar Pack</a>
+        </div>
+
+        <div class="price-card featured" data-aos="fade-up" data-aos-delay="200">
+          <div class="featured-badge" data-t="pricing.best">MÁS VENDIDO</div>
+          <div class="price-header">
+            <h3>Small Business</h3>
+            <p data-t="pricing.p2.desc">Sitio web completo para PyMEs que necesitan credibilidad.</p>
+          </div>
+
+          <div class="price-tag" data-usd="70">$70</div>
+
+          <span class="ars-meta" data-ars-for="70">
+            ARS <b class="ars-value">—</b> <span style="opacity:.9;" data-t="pricing.arsEst">(estimado)</span>
+            <small data-t="pricing.arsSmall">El estimado incluye impuestos/fees aproximados.</small>
+          </span>
+
+          <ul class="features">
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p2.f1">Hasta 5 Secciones Internas</span>
+            </li>
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p2.f2">Panel Autoadministrable</span>
+            </li>
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p2.f3">SEO Técnico Básico</span>
+            </li>
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p2.f4">Entrega: 14 Días</span>
+            </li>
+          </ul>
+
+          <a href="https://ko-fi.com/s/b3af59788f" target="_blank" rel="noopener noreferrer" class="btn-pack glow" data-t="pricing.hire">Contratar Pack</a>
+        </div>
+
+        <div class="price-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="price-header">
+            <h3 data-t="pricing.p3.title">A Medida</h3>
+            <p data-t="pricing.p3.desc">Para proyectos con necesidades específicas o integraciones.</p>
+          </div>
+
+          <div class="price-tag" style="font-size:2.4rem; line-height:1.2;" data-t="pricing.p3.quote">Cotización</div>
+          <span class="price-meta" data-t="pricing.p3.meta">Presupuesto personalizado</span>
+
+          <span class="ars-meta">
+            <span data-t="pricing.p3.ars1">ARS: depende del alcance</span>
+            <small data-t="pricing.p3.ars2">Se cotiza según lo que necesites.</small>
+          </span>
+
+          <ul class="features">
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p3.f1">Alcance definido antes de empezar</span>
+            </li>
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p3.f2">Roadmap + checkpoints</span>
+            </li>
+            <li>
+              <svg fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+              <span data-t="pricing.p3.f3">Soporte priorizado</span>
+            </li>
+          </ul>
+
+          <a href="#contact" class="btn-pack" data-t="pricing.p3.cta">Cotizar Proyecto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fiverr" class="container" style="margin-bottom:8rem;" data-aos="fade-up">
+    <div class="fiverr-section">
+      <div style="flex:1; position:relative;">
+        <div class="fiverr-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
+          </svg>
+          INTERNATIONAL CHECKOUT
+        </div>
+
+        <h2 style="font-size:2.35rem; margin-bottom:1rem; position:relative;" data-t="fiverr.title" data-t-html="1">
+          ¿Querés comprar con <span style="color:var(--fiverr);">protección de plataforma</span>?
+        </h2>
+
+        <p style="color:var(--text-muted); font-size:1.05rem; position:relative; max-width:760px;" data-t="fiverr.subtitle" data-t-html="1">
+          Fiverr es ideal si necesitás un proceso más “corporativo”: checkout internacional, recibos, escrow y un marco de resolución de disputas.
+          <strong style="color:#fff;">Perfecto para clientes globales.</strong>
+        </p>
+
+        <div class="trust-grid" aria-label="Beneficios de Fiverr">
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 9.4-8 10-4.5-.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div data-t="fiverr.b1.title">Escrow + Buyer Protection</div>
+              <span data-t="fiverr.b1.text">El pago queda retenido hasta que confirmás la entrega.</span>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 7H4m16 0v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7m16 0l-2-3H6L4 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div data-t="fiverr.b2.title">Recibo / Orden de compra</div>
+              <span data-t="fiverr.b2.text">Más simple para contabilidad y compras “formales”.</span>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/></svg>
+            <div>
+              <div data-t="fiverr.b3.title">Entrega trackeada</div>
+              <span data-t="fiverr.b3.text">Hitos claros, tiempos y comunicación dentro de la plataforma.</span>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div>
+              <div data-t="fiverr.b4.title">Pagos globales</div>
+              <span data-t="fiverr.b4.text">Tarjeta, moneda y checkout internacional (según tu país).</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-mini" data-t="fiverr.note" data-t-html="1">
+          <b>Nota de pricing:</b> en Fiverr los precios suelen ser más altos porque incluyen fees de plataforma + buyer protection/escrow + checkout internacional.
+          Si buscás el <b>mejor value</b>, contratá <b>Studio Direct</b> desde esta web: mismas manos, mismo estándar, <b>tarifa más accesible</b>.
+        </div>
+      </div>
+
+      <div style="position:relative;">
+        <a href="https://www.fiverr.com/s/LdA0Ew7" target="_blank" rel="noopener noreferrer"
+          class="btn btn-primary" style="background:var(--fiverr); color:white; border:none; padding:18px 26px; font-size:1.05rem; min-width:240px;"
+          data-t="fiverr.cta">
+          Abrir en Fiverr ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container section-padding">
+    <div class="glass-panel form-box" data-aos="zoom-in">
+      <div style="text-align:center; margin-bottom:2rem;">
+        <h2 data-t="contact.title">Soporte y Empleo</h2>
+        <p style="color:var(--text-muted);" data-t="contact.subtitle">¿Dudas antes de comprar? ¿Querés unirte al equipo?</p>
+      </div>
+
+      <form id="contactForm" novalidate>
+        <!-- ✅ subject dinámico por idioma -->
+        <input type="hidden" name="_subject" id="mailSubject"
+          value="Nuevo mensaje — Nexyv Studios"
+          data-subject-es="Nuevo mensaje — Nexyv Studios"
+          data-subject-en="New message — Nexyv Studios" />
+
+        <div class="input-group">
+          <input type="text" name="name" class="input-item" placeholder="Nombre Completo" required data-t-placeholder="contact.namePH">
+        </div>
+
+        <div class="input-group">
+          <input type="email" name="email" class="input-item" placeholder="Email de contacto" required data-t-placeholder="contact.emailPH">
+        </div>
+
+        <div class="input-group">
+          <div class="select-wrap" id="subjectWrap">
+            <select name="subject" id="subjectSelect" required>
+              <option value="" disabled selected data-t="contact.selectPH">Seleccioná un asunto...</option>
+              <option
+                value="Consulta sobre Packs"
+                data-t="contact.opt1"
+                data-value-es="Consulta sobre Packs"
+                data-value-en="Packages inquiry">
+                Consulta sobre Packs
+              </option>
+              <option
+                value="Soporte Técnico"
+                data-t="contact.opt2"
+                data-value-es="Soporte Técnico"
+                data-value-en="Technical support">
+                Soporte Técnico
+              </option>
+              <option
+                value="Quiero trabajar en Nexyv"
+                data-t="contact.opt3"
+                data-value-es="Quiero trabajar en Nexyv"
+                data-value-en="I want to work at Nexyv">
+                Quiero trabajar en Nexyv
+              </option>
+            </select>
+
+            <div class="select-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="select-error" id="subjectError" data-t="contact.selectError">Seleccioná un asunto para continuar.</div>
+        </div>
+
+        <div class="input-group">
+          <textarea name="message" rows="5" class="input-item" placeholder="Tu mensaje..." required data-t-placeholder="contact.msgPH"></textarea>
+        </div>
+
+        <button id="submitBtn" type="submit" class="btn-submit">
+          <span id="submitText" data-t="contact.submit">Enviar Mensaje</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>NEXYV <span>STUDIOS</span></h3>
+        <p data-t="footer.desc">Ingeniería Web & Estrategia Digital. Creamos experiencias que convierten visitantes en clientes, sin intermediarios.</p>
+
+        <a href="mailto:santiagosanchezsolbes@gmail.com" class="footer-mail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          santiagosanchezsolbes@gmail.com
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-t="footer.nav">Navegación</h4>
+        <div class="footer-links">
+          <a href="#about" data-t="footer.l1">Estudio & Equipo</a>
+          <a href="#pricing" data-t="footer.l2">Packs de Desarrollo</a>
+          <a href="#fiverr" data-t="footer.l3">Garantía Fiverr</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-t="footer.support">Soporte</h4>
+        <div class="footer-links">
+          <a href="#contact" data-t="footer.l4">Formulario de Contacto</a>
+          <a href="https://wa.me/" target="_blank" data-t="footer.l5">WhatsApp Directo</a>
+          <a href="https://www.fiverr.com/s/LdA0Ew7" target="_blank" style="color:var(--fiverr);" data-t="footer.l6">Perfil Verificado ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div data-t="footer.copy" data-t-html="1">&copy; <span id="yearNow"></span> Nexyv Studios. Todos los derechos reservados.</div>
+      <div style="opacity: 0.6; font-size: 0.8rem;" data-t="footer.loc">Buenos Aires, Argentina</div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-inner">
+        <div class="modal-top">
+          <span class="modal-pill" id="modalPill">
+            <span style="width:10px; height:10px; border-radius:999px; background:rgba(99,102,241,0.95); display:inline-block;"></span>
+            Nexyv Studio
+          </span>
+          <button class="modal-close" id="modalClose" aria-label="Cerrar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <h3 id="modalTitle" data-t="modal.sentTitle">Mensaje enviado</h3>
+        <p id="modalText" data-t="modal.sentText">Gracias. Te vamos a responder lo antes posible al mail que dejaste.</p>
+
+        <div class="modal-actions">
+          <button class="btn btn-outline" id="modalOk" type="button" style="width:100%;" data-t="modal.close">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    /* =========================
+      ✅ i18n inline (ES/EN)
+      ========================= */
+    const I18N = {
+      es: {
+        "site.title": "Nexyv Studio | Desarrollo Web",
+        "site.desc": "Agencia de desarrollo web y estrategia digital. Nexyv Studio.",
+        "site.ogTitle": "Nexyv Studio | Desarrollo Web",
+        "site.ogDesc": "Experiencias web premium. Estética, performance y estrategia directa para tu negocio.",
+
+        "loader.subtitle": "Cargando experiencia premium…",
+
+        "nav.about": "Estudio",
+        "nav.pricing": "Packs",
+        "nav.fiverr": "Fiverr",
+        "nav.support": "Soporte",
+        "nav.viewPacks": "Ver Packs",
+        "drawer.fiverr": "Fiverr ↗",
+
+        "hero.title": "Arquitectura Digital<br>Sin Límites.",
+        "hero.subtitle": "Creamos experiencias web de alto rendimiento. <strong>Estética premium</strong>, ingeniería sólida y estrategia directa para tu negocio.",
+        "hero.cta1": "Explorar Packs",
+        "hero.cta2": "Perfil Fiverr ↗",
+
+        "about.title": "La Diferencia Nexyv",
+        "about.p1": "Soy <strong>Santiago Sánchez Solbes</strong>, fundador de Nexyv Studio.",
+        "about.p2": "Eliminamos la burocracia típica de las agencias: sin intermediarios y sin reuniones innecesarias. Trabajás directo <strong>con el equipo que construye tu producto</strong>. Resultado: claridad, velocidad y una web de mayor nivel.",
+
+        "team.title": "Equipo",
+        "team.role1": "Founder • Lead Developer",
+        "team.role2": "Co-Founder • Marketing",
+        "team.role3": "Directora General",
+
+        "stats.expTitle": "Años de experiencia",
+        "stats.expText": "Webs rápidas, limpias y profesionales.",
+        "stats.remoteTitle": "Remoto",
+        "stats.remoteText": "Trabajamos async: rápido, claro y sin vueltas.",
+
+        "pricing.badge": "Tarifas del Estudio",
+        "pricing.title": "Elegí tu Nivel",
+        "pricing.note": "<b>Importante:</b> nuestros precios están pensados para ser accesibles manteniendo calidad “agency-level”. Trabajamos directo (sin capas de cuenta/ventas), por eso podés obtener un resultado premium con un costo más razonable.",
+        "pricing.arsEst": "(estimado)",
+        "pricing.arsSmall": "El estimado incluye impuestos/fees aproximados.",
+        "pricing.hire": "Contratar Pack",
+        "pricing.best": "MÁS VENDIDO",
+
+        "pricing.p1.desc": "Ideal para portfolios, CVs digitales o landing pages de producto único.",
+        "pricing.p1.f1": "Diseño One-Page (1 Página)",
+        "pricing.p1.f2": "Integración WhatsApp",
+        "pricing.p1.f3": "Hosting Configurado",
+        "pricing.p1.f4": "Entrega: 5 Días",
+
+        "pricing.p2.desc": "Sitio web completo para PyMEs que necesitan credibilidad.",
+        "pricing.p2.f1": "Hasta 5 Secciones Internas",
+        "pricing.p2.f2": "Panel Autoadministrable",
+        "pricing.p2.f3": "SEO Técnico Básico",
+        "pricing.p2.f4": "Entrega: 14 Días",
+
+        "pricing.p3.title": "A Medida",
+        "pricing.p3.desc": "Para proyectos con necesidades específicas o integraciones.",
+        "pricing.p3.quote": "Cotización",
+        "pricing.p3.meta": "Presupuesto personalizado",
+        "pricing.p3.ars1": "ARS: depende del alcance",
+        "pricing.p3.ars2": "Se cotiza según lo que necesites.",
+        "pricing.p3.f1": "Alcance definido antes de empezar",
+        "pricing.p3.f2": "Roadmap + checkpoints",
+        "pricing.p3.f3": "Soporte priorizado",
+        "pricing.p3.cta": "Cotizar Proyecto",
+
+        "fiverr.title": "¿Querés comprar con <span style='color:var(--fiverr);'>protección de plataforma</span>?",
+        "fiverr.subtitle": "Fiverr es ideal si necesitás un proceso más “corporativo”: checkout internacional, recibos, escrow y un marco de resolución de disputas. <strong style='color:#fff;'>Perfecto para clientes globales.</strong>",
+        "fiverr.b1.title": "Escrow + Buyer Protection",
+        "fiverr.b1.text": "El pago queda retenido hasta que confirmás la entrega.",
+        "fiverr.b2.title": "Recibo / Orden de compra",
+        "fiverr.b2.text": "Más simple para contabilidad y compras “formales”.",
+        "fiverr.b3.title": "Entrega trackeada",
+        "fiverr.b3.text": "Hitos claros, tiempos y comunicación dentro de la plataforma.",
+        "fiverr.b4.title": "Pagos globales",
+        "fiverr.b4.text": "Tarjeta, moneda y checkout internacional (según tu país).",
+        "fiverr.note": "<b>Nota de pricing:</b> en Fiverr los precios suelen ser más altos porque incluyen fees de plataforma + buyer protection/escrow + checkout internacional. Si buscás el <b>mejor value</b>, contratá <b>Studio Direct</b> desde esta web: mismas manos, mismo estándar, <b>tarifa más accesible</b>.",
+        "fiverr.cta": "Abrir en Fiverr ↗",
+
+        "contact.title": "Soporte y Empleo",
+        "contact.subtitle": "¿Dudas antes de comprar? ¿Querés unirte al equipo?",
+        "contact.namePH": "Nombre Completo",
+        "contact.emailPH": "Email de contacto",
+        "contact.selectPH": "Seleccioná un asunto...",
+        "contact.opt1": "Consulta sobre Packs",
+        "contact.opt2": "Soporte Técnico",
+        "contact.opt3": "Quiero trabajar en Nexyv",
+        "contact.selectError": "Seleccioná un asunto para continuar.",
+        "contact.msgPH": "Tu mensaje...",
+        "contact.submit": "Enviar Mensaje",
+        "contact.sending": "Enviando...",
+
+        "modal.sentTitle": "Mensaje enviado",
+        "modal.sentText": "Gracias. Te vamos a responder lo antes posible al mail que dejaste.",
+        "modal.failTitle": "No se pudo enviar",
+        "modal.failText": "Hubo un error al enviar el mensaje. Probá de nuevo o escribinos directo al mail.",
+        "modal.connTitle": "Error de conexión",
+        "modal.connText": "No pudimos conectar para enviar el mensaje. Revisá tu internet o probá de nuevo en unos segundos.",
+        "modal.close": "Cerrar",
+
+        "footer.desc": "Ingeniería Web & Estrategia Digital. Creamos experiencias que convierten visitantes en clientes, sin intermediarios.",
+        "footer.nav": "Navegación",
+        "footer.support": "Soporte",
+        "footer.l1": "Estudio & Equipo",
+        "footer.l2": "Packs de Desarrollo",
+        "footer.l3": "Garantía Fiverr",
+        "footer.l4": "Formulario de Contacto",
+        "footer.l5": "WhatsApp Directo",
+        "footer.l6": "Perfil Verificado ↗",
+        "footer.copy": "&copy; <span id='yearNow'></span> Nexyv Studios. Todos los derechos reservados.",
+        "footer.loc": "Buenos Aires, Argentina",
+
+        "ars.updated": "Actualizado: {date}. Incluye impuestos/fees aproximados."
+      },
+
+      en: {
+        "site.title": "Nexyv Studio | Web Development",
+        "site.desc": "Web development & digital strategy studio. Nexyv Studio.",
+        "site.ogTitle": "Nexyv Studio | Web Development",
+        "site.ogDesc": "Premium web experiences. Aesthetics, performance, and direct strategy for your business.",
+
+        "loader.subtitle": "Loading premium experience…",
+
+        "nav.about": "Studio",
+        "nav.pricing": "Packs",
+        "nav.fiverr": "Fiverr",
+        "nav.support": "Support",
+        "nav.viewPacks": "View Packs",
+        "drawer.fiverr": "Fiverr ↗",
+
+        "hero.title": "Digital Architecture<br>Without Limits.",
+        "hero.subtitle": "We build high-performance web experiences. <strong>Premium aesthetics</strong>, solid engineering, and direct strategy for your business.",
+        "hero.cta1": "Explore Packs",
+        "hero.cta2": "Fiverr Profile ↗",
+
+        "about.title": "The Nexyv Difference",
+        "about.p1": "I’m <strong>Santiago Sánchez Solbes</strong>, founder of Nexyv Studio.",
+        "about.p2": "We cut the typical agency bureaucracy: no middlemen and no unnecessary meetings. You work directly <strong>with the team building your product</strong>. Result: clarity, speed, and a higher-end website.",
+
+        "team.title": "Team",
+        "team.role1": "Founder • Lead Developer",
+        "team.role2": "Co-Founder • Marketing",
+        "team.role3": "General Director",
+
+        "stats.expTitle": "Years of experience",
+        "stats.expText": "Fast, clean, professional websites.",
+        "stats.remoteTitle": "Remote",
+        "stats.remoteText": "We work async: fast, clear, no back-and-forth.",
+
+        "pricing.badge": "Studio Rates",
+        "pricing.title": "Choose Your Tier",
+        "pricing.note": "<b>Important:</b> our prices are designed to stay accessible while keeping “agency-level” quality. We work directly (no sales/account layers), so you get premium results at a more reasonable cost.",
+        "pricing.arsEst": "(estimate)",
+        "pricing.arsSmall": "Estimate includes approximate taxes/fees.",
+        "pricing.hire": "Hire Package",
+        "pricing.best": "BEST SELLER",
+
+        "pricing.p1.desc": "Ideal for portfolios, digital CVs, or single-product landing pages.",
+        "pricing.p1.f1": "One-page design (single page)",
+        "pricing.p1.f2": "WhatsApp integration",
+        "pricing.p1.f3": "Hosting configured",
+        "pricing.p1.f4": "Delivery: 5 days",
+
+        "pricing.p2.desc": "Full website for small businesses that need credibility.",
+        "pricing.p2.f1": "Up to 5 internal sections",
+        "pricing.p2.f2": "Self-manageable panel",
+        "pricing.p2.f3": "Basic technical SEO",
+        "pricing.p2.f4": "Delivery: 14 days",
+
+        "pricing.p3.title": "Custom",
+        "pricing.p3.desc": "For projects with specific requirements or integrations.",
+        "pricing.p3.quote": "Quote",
+        "pricing.p3.meta": "Custom pricing",
+        "pricing.p3.ars1": "ARS: depends on scope",
+        "pricing.p3.ars2": "Priced based on what you need.",
+        "pricing.p3.f1": "Scope defined before starting",
+        "pricing.p3.f2": "Roadmap + checkpoints",
+        "pricing.p3.f3": "Priority support",
+        "pricing.p3.cta": "Request a Quote",
+
+        "fiverr.title": "Want to buy with <span style='color:var(--fiverr);'>platform protection</span>?",
+        "fiverr.subtitle": "Fiverr is ideal if you need a more “corporate” process: international checkout, receipts, escrow, and a dispute-resolution framework. <strong style='color:#fff;'>Perfect for global clients.</strong>",
+        "fiverr.b1.title": "Escrow + Buyer Protection",
+        "fiverr.b1.text": "Payment is held until you confirm delivery.",
+        "fiverr.b2.title": "Receipt / purchase order",
+        "fiverr.b2.text": "Easier for accounting and formal purchasing.",
+        "fiverr.b3.title": "Tracked delivery",
+        "fiverr.b3.text": "Clear milestones, timelines, and platform messaging.",
+        "fiverr.b4.title": "Global payments",
+        "fiverr.b4.text": "Card, currency, and international checkout (country-dependent).",
+        "fiverr.note": "<b>Pricing note:</b> Fiverr prices are usually higher because they include platform fees + buyer protection/escrow + international checkout. If you want the <b>best value</b>, hire <b>Studio Direct</b> on this website: same hands, same standard, <b>more affordable rate</b>.",
+        "fiverr.cta": "Open on Fiverr ↗",
+
+        "contact.title": "Support & Careers",
+        "contact.subtitle": "Questions before buying? Want to join the team?",
+        "contact.namePH": "Full name",
+        "contact.emailPH": "Contact email",
+        "contact.selectPH": "Select a subject...",
+        "contact.opt1": "Packages inquiry",
+        "contact.opt2": "Technical support",
+        "contact.opt3": "I want to work at Nexyv",
+        "contact.selectError": "Please select a subject to continue.",
+        "contact.msgPH": "Your message...",
+        "contact.submit": "Send message",
+        "contact.sending": "Sending...",
+
+        "modal.sentTitle": "Message sent",
+        "modal.sentText": "Thanks! We’ll reply as soon as possible to the email you provided.",
+        "modal.failTitle": "Couldn’t send",
+        "modal.failText": "There was an error sending your message. Please try again or email us directly.",
+        "modal.connTitle": "Connection error",
+        "modal.connText": "We couldn’t connect to send the message. Check your internet and try again in a few seconds.",
+        "modal.close": "Close",
+
+        "footer.desc": "Web engineering & digital strategy. We build experiences that turn visitors into customers—no middlemen.",
+        "footer.nav": "Navigation",
+        "footer.support": "Support",
+        "footer.l1": "Studio & Team",
+        "footer.l2": "Development Packages",
+        "footer.l3": "Fiverr Guarantee",
+        "footer.l4": "Contact Form",
+        "footer.l5": "Direct WhatsApp",
+        "footer.l6": "Verified Profile ↗",
+        "footer.copy": "&copy; <span id='yearNow'></span> Nexyv Studios. All rights reserved.",
+        "footer.loc": "Buenos Aires, Argentina",
+
+        "ars.updated": "Updated: {date}. Includes approximate taxes/fees."
+      }
+    };
+
+    const LANG_KEY = "nexyv_lang_v1";
+    let currentLang = "es";
+
+    function t(key){
+      return (I18N[currentLang] && I18N[currentLang][key]) || (I18N.es && I18N.es[key]) || "";
+    }
+
+    function setMetaTranslations(){
+      // title + desc
+      document.title = t("site.title");
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute("content", t("site.desc"));
+
+      // OG
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDesc  = document.querySelector('meta[property="og:description"]');
+      if (ogTitle) ogTitle.setAttribute("content", t("site.ogTitle"));
+      if (ogDesc)  ogDesc.setAttribute("content", t("site.ogDesc"));
+
+      // Twitter
+      const twTitle = document.querySelector('meta[name="twitter:title"]');
+      const twDesc  = document.querySelector('meta[name="twitter:description"]');
+      if (twTitle) twTitle.setAttribute("content", t("site.ogTitle"));
+      if (twDesc)  twDesc.setAttribute("content", t("site.ogDesc"));
+    }
+
+    function applyLang(lang){
+      currentLang = lang === "en" ? "en" : "es";
+      localStorage.setItem(LANG_KEY, currentLang);
+
+      // html lang
+      document.documentElement.lang = currentLang === "es" ? "es-AR" : "en";
+
+      // toggle UI
+      const bES = document.getElementById("langES");
+      const bEN = document.getElementById("langEN");
+      if (bES && bEN){
+        bES.classList.toggle("active", currentLang === "es");
+        bEN.classList.toggle("active", currentLang === "en");
+      }
+
+      // data-t texts
+      document.querySelectorAll("[data-t]").forEach(el => {
+        const key = el.getAttribute("data-t");
+        const val = t(key);
+        if (!val) return;
+
+        const isHtml = el.getAttribute("data-t-html") === "1";
+        if (isHtml) el.innerHTML = val;
+        else el.textContent = val;
+      });
+
+      // placeholders
+      document.querySelectorAll("[data-t-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-t-placeholder");
+        const val = t(key);
+        if (!val) return;
+        el.setAttribute("placeholder", val);
+      });
+
+      // select option text + value
+      document.querySelectorAll("#subjectSelect option[data-value-es][data-value-en]").forEach(opt => {
+        const val = currentLang === "es" ? opt.getAttribute("data-value-es") : opt.getAttribute("data-value-en");
+        opt.value = val;
+      });
+
+      // mail subject hidden input
+      const mailSub = document.getElementById("mailSubject");
+      if (mailSub){
+        mailSub.value = currentLang === "es" ? mailSub.getAttribute("data-subject-es") : mailSub.getAttribute("data-subject-en");
+      }
+
+      setMetaTranslations();
+
+      // refrescar label de ARS si ya calculó
+      initARS(true);
+    }
+
+    /* =========================
+        ✅ Loader 2.5s exactos
+    ========================= */
+    (() => {
+      const loader = document.getElementById("pageLoader");
+      const bar = document.getElementById("loaderBar");
+
+      document.body.classList.add("is-loading");
+
+      requestAnimationFrame(() => {
+        if (bar) bar.style.width = "100%";
+      });
+
+      const DURATION = 2500;
+
+      setTimeout(() => {
+        loader.classList.add("hide");
+        loader.setAttribute("aria-hidden","true");
+        document.body.classList.remove("is-loading");
+
+        setTimeout(() => {
+          loader.remove();
+        }, 650);
+      }, DURATION);
+    })();
+
+    AOS.init({ duration: 800, offset: 50, once: true });
+
+    document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+    const nav = document.getElementById('nav');
+    const onScroll = () => {
+      if (window.scrollY > 8) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    const drawer = document.getElementById('drawer');
+    const openMenu = document.getElementById('openMenu');
+
+    const openDrawer = () => {
+      drawer.style.display = 'block';
+      drawer.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeDrawer = () => {
+      drawer.style.display = 'none';
+      drawer.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    };
+
+    openMenu.addEventListener('click', openDrawer);
+    drawer.addEventListener('click', (e) => { if (e.target === drawer) closeDrawer(); });
+    document.querySelectorAll('.drawerLink').forEach(a => a.addEventListener('click', closeDrawer));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+    /* ✅ ARS calculator (LIVE) — usa Dólar Tarjeta real */
+    const FALLBACK_USD_TO_ARS_TARJETA = 1600;
+    const CACHE_KEY = "nexyv_rates_cache_v1";
+    const CACHE_TTL_MS = 30 * 60 * 1000;
+
+    function formatARS(n){
+      return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    function setARSValues(usdToArsTarjeta, updatedLabel){
+      document.querySelectorAll('[data-ars-for]').forEach(el => {
+        const usd = Number(el.getAttribute('data-ars-for'));
+        if (!isFinite(usd)) return;
+
+        const ars = usd * usdToArsTarjeta;
+
+        const out = el.querySelector('.ars-value');
+        if (out) out.textContent = formatARS(ars);
+
+        const small = el.querySelector('small');
+        if (small){
+          if (updatedLabel){
+            small.textContent = t("ars.updated").replace("{date}", updatedLabel);
+          } else {
+            small.textContent = t("pricing.arsSmall");
+          }
+        }
+      });
+    }
+
+    function readCache(){
+      try{
+        const raw = localStorage.getItem(CACHE_KEY);
+        if (!raw) return null;
+        const data = JSON.parse(raw);
+        if (!data || !data.t || !data.usdToArsTarjeta) return null;
+        if (Date.now() - data.t > CACHE_TTL_MS) return null;
+        return data;
+      } catch { return null; }
+    }
+
+    function writeCache(payload){
+      try{ localStorage.setItem(CACHE_KEY, JSON.stringify(payload)); } catch {}
+    }
+
+    async function fetchJSON(url){
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("Bad response");
+      return res.json();
+    }
+
+    async function initARS(fromLangSwitch = false){
+      const cached = readCache();
+      if (cached){
+        setARSValues(cached.usdToArsTarjeta, cached.updatedLabel || null);
+        return;
+      }
+
+      try{
+        const [tarjeta, oficial] = await Promise.all([
+          fetchJSON("https://dolarapi.com/v1/dolares/tarjeta"),
+          fetchJSON("https://dolarapi.com/v1/dolares/oficial"),
+        ]);
+
+        const usdToArsTarjeta = Number(tarjeta?.venta) || Number(tarjeta?.compra) || null;
+        if (!usdToArsTarjeta || !isFinite(usdToArsTarjeta)) throw new Error("No rate");
+
+        const fecha = tarjeta?.fechaActualizacion || oficial?.fechaActualizacion || null;
+
+        const locale = currentLang === "es" ? "es-AR" : "en-US";
+        const updatedLabel = fecha
+          ? new Date(fecha).toLocaleString(locale, { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit', hourCycle:'h23' })
+          : null;
+
+        setARSValues(usdToArsTarjeta, updatedLabel);
+        writeCache({ t: Date.now(), usdToArsTarjeta, updatedLabel });
+
+      } catch(err){
+        setARSValues(FALLBACK_USD_TO_ARS_TARJETA, null);
+      }
+    }
+
+    initARS();
+
+    /* ✅ Custom Formspree submit (NO redirect) */
+    const FORM_ENDPOINT = "https://formspree.io/f/xrekjzwr";
+
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+
+    // ✅ Select + error
+    const subjectSelect = document.getElementById("subjectSelect");
+    const subjectWrap = document.getElementById("subjectWrap");
+    const subjectError = document.getElementById("subjectError");
+
+    // Limpia error al seleccionar
+    subjectSelect.addEventListener("change", () => {
+      if (subjectSelect.value){
+        subjectWrap.classList.remove("error");
+        subjectError.style.display = "none";
+      }
+    });
+
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+    const modalOk = document.getElementById('modalOk');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const modalPill = document.getElementById('modalPill');
+
+    let autoCloseTimer = null;
+
+    function openModal({ title, text, ok = true }){
+      modalTitle.textContent = title;
+      modalText.textContent = text;
+
+      modalPill.innerHTML = ok
+        ? `<span style="width:10px; height:10px; border-radius:999px; background: rgba(29,191,115,0.95); display:inline-block;"></span> Nexyv Studio`
+        : `<span style="width:10px; height:10px; border-radius:999px; background: rgba(239,68,68,0.95); display:inline-block;"></span> Nexyv Studio`;
+
+      modalOverlay.style.display = 'flex';
+      modalOverlay.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+
+      clearTimeout(autoCloseTimer);
+      autoCloseTimer = setTimeout(() => closeModal(), ok ? 4200 : 6500);
+    }
+
+    function closeModal(){
+      modalOverlay.style.display = 'none';
+      modalOverlay.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      clearTimeout(autoCloseTimer);
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalOk.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    function setLoading(isLoading){
+      if (isLoading){
+        submitBtn.disabled = true;
+        submitText.innerHTML = `<span class="spinner" aria-hidden="true"></span> ${t("contact.sending")}`;
+      } else {
+        submitBtn.disabled = false;
+        submitText.textContent = t("contact.submit");
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!subjectSelect.value){
+        subjectWrap.classList.add("error");
+        subjectError.style.display = "block";
+        subjectSelect.focus({ preventScroll: true });
+        subjectWrap.scrollIntoView({ behavior:"smooth", block:"center" });
+        return;
+      } else {
+        subjectWrap.classList.remove("error");
+        subjectError.style.display = "none";
+      }
+
+      if (!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+
+      setLoading(true);
+
+      try{
+        const formData = new FormData(form);
+
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok){
+          form.reset();
+          subjectWrap.classList.remove("error");
+          subjectError.style.display = "none";
+
+          openModal({
+            title: t("modal.sentTitle"),
+            text: t("modal.sentText"),
+            ok: true
+          });
+        } else {
+          openModal({
+            title: t("modal.failTitle"),
+            text: t("modal.failText"),
+            ok: false
+          });
+        }
+      } catch(err){
+        openModal({
+          title: t("modal.connTitle"),
+          text: t("modal.connText"),
+          ok: false
+        });
+      } finally{
+        setLoading(false);
+      }
+    });
+
+    document.getElementById("yearNow").textContent = new Date().getFullYear();
+
+    /* =========================
+      ✅ Language switch init
+      ========================= */
+    const langES = document.getElementById("langES");
+    const langEN = document.getElementById("langEN");
+
+    langES.addEventListener("click", () => applyLang("es"));
+    langEN.addEventListener("click", () => applyLang("en"));
+
+    // ✅ ALWAYS start in Spanish unless user already chose EN
+    const saved = localStorage.getItem(LANG_KEY);
+    applyLang(saved === "en" ? "en" : "es");
+  </script>
+</body>
+</html>
